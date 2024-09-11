@@ -76,7 +76,9 @@ To install Axios, run:
 npm install axios
 ```
 
-## Now set the Pokemon data
+## Setting State Variables
+In the Main component, we set up state variables to manage Pokémon data, loading state, and URLs for pagination. The pokeFun function fetches data from the PokéAPI and updates the state accordingly.
+### State Variables
 - To set the pokeon data
 
 `const [pokeData, setPokeData] = useState([]);`
@@ -102,7 +104,8 @@ npm install axios
 `const [pokeDex, setPokeDex] = useState();`
 
 
-### Now Ftech the data using the API and UseEffect()
+## Fetching Data
+The pokeFun function fetches the Pokémon data and updates the state:
 
 - Make a async function `pokeFun()` to fetch data ans call it inside the useEffect
     - set loading true
@@ -122,7 +125,8 @@ npm install axios
     - set loading false `setLoading(false);`
 
 
-### Now passing props to the Component
+## Passing Props
+In the Main component, we pass the fetched Pokémon data and loading state to the Card component. We also pass a function to handle clicks on Pokémon cards.
 
 - In Card Component pass the data
     - `<Card
@@ -163,19 +167,21 @@ npm install axios
               );
             })}`
 
-### Now passing props to the Component for prev and next button
+## Handling Navigation
+The "Previous" and "Next" buttons in the Main component allow users to navigate through the list of Pokémon. When clicked, they reset the Pokémon data and update the URL to fetch the corresponding Pokémon.
 
 - Check the prevUrl exixts or not then
-- Onclick set the pokemon data empty `setPokeData([]);` and set the `prevUrl`
+    - Onclick set the pokemon data empty `setPokeData([]);` and set the `prevUrl`
 
-- Check the nextUrl exixts or not then
-- Onclick set the pokemon data empty `setPokeData([]);` and set the `nextUrl`
+- Check the nextUrl exists or not then
+    - Onclick set the pokemon data empty `setPokeData([]);` and set the `nextUrl`
 
 
+## Styling the Application
+You can style the application using CSS to create a visually appealing interface. Below is a basic example of how you might style the components:
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+###  main.css
 
-Currently, two official plugins are available:
+## Conclusion
+In this guide, we've built a simple Pokémon application using React and Vite, structured into three components: Main, Card, and Pokemon. We fetched data from the PokéAPI and displayed it in a user-friendly interface. You can further enhance this application by adding more features, improving the styling, or integrating additional APIs. Happy coding!
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
