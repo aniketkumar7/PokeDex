@@ -6,7 +6,7 @@ function Pokemon({ data }) {
       {!data ? (
         ""
       ) : (
-        <>
+        <div className="pokemon">
           <h1>{data.name}</h1>
           <img
             src={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/dream-world/${data.id}.svg`}
@@ -38,7 +38,7 @@ function Pokemon({ data }) {
               );
             })}
           </div>
-        </>
+        </div>
       )}
     </>
   );
