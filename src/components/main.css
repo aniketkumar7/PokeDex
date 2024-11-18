@@ -538,28 +538,283 @@ html {
   transform: translateX(100%);
 }
 
-@media (max-width: 768px) {
+
+/* Mobile Devices (Portrait) */
+@media only screen and (max-width: 480px) {
   .container {
-    padding: 1.5rem;
-    flex-direction: column;
+    width: 100%;
+    padding: 1rem;
+    gap: 1.5rem;
   }
-  .right-content {
+
+  .left-content {
+    min-width: 100%;
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+
+  .card {
+    padding: 0.6rem 1rem;
+  }
+
+  .card img {
+    width: 80px;
+    height: 80px;
+  }
+
+  .poke-card {
     padding: 1.5rem;
+  }
+
+  .card-title {
+    font-size: 1.2rem;
+  }
+
+  .card-subtitle {
+    font-size: 0.9rem;
+  }
+}
+
+/* Tablets (Portrait) */
+@media only screen and (min-width: 481px) and (max-width: 768px) {
+  .container {
+    padding: 2rem;
+    gap: 2rem;
+  }
+
+  .left-content {
+    grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+    gap: 1.5rem;
+  }
+
+  .card img {
+    width: 100px;
+    height: 100px;
+  }
+}
+
+/* Tablets (Landscape) and Small Laptops */
+@media only screen and (min-width: 769px) and (max-width: 1024px) {
+  .container {
+    padding: 2rem;
+  }
+
+  .left-content {
+    grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+  }
+}
+
+/* Large Screens */
+@media only screen and (min-width: 1824px) {
+  .container {
+    max-width: 1800px;
+    padding: 3rem;
+  }
+
+  .left-content {
+    grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+    gap: 2.5rem;
+  }
+
+  .card {
+    padding: 1rem 2rem;
+  }
+
+  .card img {
+    width: 150px;
+    height: 150px;
+  }
+
+  .card-title {
+    font-size: 1.8rem;
+  }
+
+  .card-subtitle {
+    font-size: 1.2rem;
+  }
+}
+
+/* For devices with hover capability */
+@media (hover: hover) {
+  .card:hover {
+    transform: translateY(-8px) scale(1.02) rotateX(5deg);
+  }
+}
+
+/* For devices without hover capability (touch devices) */
+@media (hover: none) {
+  .card:active {
+    transform: scale(0.98);
+  }
+}
+
+/* Mobile Devices (Portrait) */
+@media only screen and (max-width: 480px) {
+  .right-content {
+    min-width: 100%;
+    padding: 1.5rem;
+    position: relative;
+    top: 0;
+    border-radius: 20px;
+  }
+
+  .right-content img {
+    height: 250px;
+    margin: 1.5rem auto;
+  }
+
+  .right-content h1 {
+    font-size: 2rem;
+    margin-bottom: 1.5rem;
+    letter-spacing: 2px;
+  }
+
+  .abilities {
+    padding: 1rem;
+    margin-bottom: 1rem;
+  }
+
+  .abilities h1 {
+    font-size: 1.8rem;
+  }
+
+  .ability {
+    gap: 1rem;
+  }
+
+  .abilities .group {
+    padding: 0.8rem;
+    font-size: 0.9rem;
+  }
+
+  .base-stat {
+    gap: 0.8rem;
+  }
+
+  .base-stat .stat {
+    padding: 0.8rem 1.2rem;
+    font-size: 0.9rem;
+    letter-spacing: 1px;
+  }
+
+  .btn-group {
+    gap: 1rem;
+  }
+
+  .btn-group button {
+    padding: 0.8rem 1.5rem;
+    font-size: 0.9rem;
+    height: 3.5rem;
+  }
+}
+
+/* Tablets (Portrait) */
+@media only screen and (min-width: 481px) and (max-width: 768px) {
+  .right-content {
+    min-width: 100%;
+    padding: 2rem;
+    position: relative;
+    top: 0;
+  }
+
+  .right-content img {
+    height: 300px;
+    margin: 2rem auto;
+  }
+
+  .right-content h1 {
+    font-size: 2.5rem;
+  }
+
+  .abilities h1 {
+    font-size: 2rem;
+  }
+}
+
+/* Tablets (Landscape) and Small Laptops */
+@media only screen and (min-width: 769px) and (max-width: 1024px) {
+  .right-content {
+    padding: 2.5rem;
+  }
+
+  .right-content img {
+    height: 320px;
   }
 
   .right-content h1 {
     font-size: 2.8rem;
   }
+}
 
-  .abilities {
-    padding: 1rem;
+/* Large Screens */
+@media only screen and (min-width: 1824px) {
+  .right-content {
+    padding: 4rem;
+    border-radius: 40px;
   }
 
-  .btn-group {
-    flex-direction: column;
+  .right-content img {
+    height: 400px;
+    margin: 3rem auto;
+  }
+
+  .right-content h1 {
+    font-size: 4rem;
+    letter-spacing: 4px;
+  }
+
+  .abilities {
+    padding: 2rem;
+  }
+
+  .abilities h1 {
+    font-size: 2.5rem;
+  }
+
+  .abilities .group {
+    padding: 1.2rem;
+    font-size: 1.1rem;
+  }
+
+  .base-stat .stat {
+    padding: 1.2rem 2rem;
+    font-size: 1.1rem;
   }
 
   .btn-group button {
-    width: 100%;
+    padding: 1.2rem 3rem;
+    font-size: 1.2rem;
+    height: 4.5rem;
   }
 }
+
+/* For devices with hover capability */
+@media (hover: hover) {
+  .right-content img:hover {
+    transform: scale(1.15) rotate(5deg) translateY(-15px);
+  }
+
+  .base-stat .stat:hover {
+    transform: translateY(-3px);
+  }
+
+  .btn-group button:hover {
+    transform: translateY(-5px);
+  }
+}
+
+/* For devices without hover capability (touch devices) */
+@media (hover: none) {
+  .right-content img:active {
+    transform: scale(1.05);
+  }
+
+  .base-stat .stat:active {
+    transform: translateY(-2px);
+  }
+
+  .btn-group button:active {
+    transform: translateY(-2px);
+  }
+}
+
