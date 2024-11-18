@@ -52,6 +52,15 @@ const Main = () => {
     pokeFun();
   }, [url]);
 
+  const handlePokemonClick = (poke) => {
+    setPokeDex(poke);
+    // Smooth scroll to top
+    window.scrollTo({
+      top: 0,
+      behavior: "smooth",
+    });
+  };
+
   const LoadingCard = () => (
     <div className="loading-card">
       <div className="loading-animation"></div>
@@ -71,7 +80,7 @@ const Main = () => {
             <Card
               pokemon={pokeData}
               loading={loading}
-              infoPokemon={(poke) => setPokeDex(poke)}
+              infoPokemon={handlePokemonClick}
             />
           )}
 
@@ -79,9 +88,7 @@ const Main = () => {
             {prevUrl && (
               <button
                 onClick={() => {
-                  // Clear the current list of pokemons
                   setPokeData([]);
-                  // Set the URL to the previous page of pokemons
                   setUrl(prevUrl);
                 }}>
                 Previous
@@ -108,4 +115,5 @@ const Main = () => {
     </div>
   );
 };
+
 export default Main;
