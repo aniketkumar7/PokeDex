@@ -1,5 +1,4 @@
-import { useEffect } from "react";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Card from "./Card";
 import "./main.css";
 import Pokemon from "./Pokemon";
@@ -12,6 +11,8 @@ const Main = () => {
   const [nextUrl, setNextUrl] = useState();
   const [prevUrl, setPrevUrl] = useState();
   const [pokeDex, setPokeDex] = useState();
+  const [searchTerm, setSearchTerm] = useState("");
+  const [filteredPokemon, setFilteredPokemon] = useState([]);
 
   // Fetch initial Pokemon data
   useEffect(() => {
@@ -42,6 +43,7 @@ const Main = () => {
           })
         );
         setPokeData(pokemonData);
+        setFilteredPokemon(pokemonData);
         setLoading(false);
       } catch (error) {
         console.error("Error fetching Pokemon data:", error);
@@ -52,13 +54,24 @@ const Main = () => {
     pokeFun();
   }, [url]);
 
+  // Handle search
+  useEffect(() => {
+    const filtered = pokeData.filter((pokemon) =>
+      pokemon.name.toLowerCase().includes(searchTerm.toLowerCase())
+    );
+    setFilteredPokemon(filtered);
+  }, [searchTerm, pokeData]);
+
   const handlePokemonClick = (poke) => {
     setPokeDex(poke);
-    // Smooth scroll to top
     window.scrollTo({
       top: 0,
       behavior: "smooth",
     });
+  };
+
+  const handleSearch = (e) => {
+    setSearchTerm(e.target.value);
   };
 
   const LoadingCard = () => (
@@ -70,6 +83,15 @@ const Main = () => {
   return (
     <div className="main">
       <h1 className="title">Pokedex</h1>
+      <div className="search-container">
+        <input
+          type="text"
+          placeholder="Search Pokemon..."
+          value={searchTerm}
+          onChange={handleSearch}
+          className="search-input"
+        />
+      </div>
       <div className="container">
         <div className="left-content">
           {loading ? (
@@ -78,7 +100,7 @@ const Main = () => {
             ))
           ) : (
             <Card
-              pokemon={pokeData}
+              pokemon={filteredPokemon}
               loading={loading}
               infoPokemon={handlePokemonClick}
             />
@@ -90,6 +112,7 @@ const Main = () => {
                 onClick={() => {
                   setPokeData([]);
                   setUrl(prevUrl);
+                  setSearchTerm("");
                 }}>
                 Previous
               </button>
@@ -100,6 +123,7 @@ const Main = () => {
                 onClick={() => {
                   setPokeData([]);
                   setUrl(nextUrl);
+                  setSearchTerm("");
                 }}>
                 Next
               </button>
