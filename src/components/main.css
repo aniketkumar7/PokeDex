@@ -819,3 +819,115 @@ html {
   }
 }
 
+
+/* Mobile Devices (Portrait) */
+@media only screen and (max-width: 480px) {
+  .title {
+    font-size: 2.5rem;
+    letter-spacing: 2px;
+    padding: 0.3rem 0;
+  }
+
+  .loading-card {
+    width: 100%;
+    height: 120px;
+    margin: 8px;
+    border-radius: 10px;
+  }
+}
+
+/* Tablets (Portrait) */
+@media only screen and (min-width: 481px) and (max-width: 768px) {
+  .title {
+    font-size: 3.5rem;
+    letter-spacing: 2.5px;
+  }
+
+  .loading-card {
+    width: 220px;
+    height: 130px;
+    margin: 8px;
+  }
+}
+
+/* Tablets (Landscape) and Small Laptops */
+@media only screen and (min-width: 769px) and (max-width: 1024px) {
+  .title {
+    font-size: 4rem;
+  }
+
+  .loading-card {
+    width: 230px;
+    height: 135px;
+  }
+}
+
+/* Desktop and Larger Screens */
+@media only screen and (min-width: 1025px) and (max-width: 1824px) {
+  .title {
+    font-size: 4.5rem;
+  }
+
+  .loading-card {
+    width: 250px;
+    height: 140px;
+  }
+}
+
+/* Extra Large Screens */
+@media only screen and (min-width: 1824px) {
+  .title {
+    font-size: 5.5rem;
+    letter-spacing: 4px;
+    padding: 0.8rem 0;
+  }
+
+  .loading-card {
+    width: 280px;
+    height: 160px;
+    margin: 12px;
+    border-radius: 15px;
+  }
+}
+
+/* Adjust animations for reduced motion preference */
+@media (prefers-reduced-motion: reduce) {
+  .loading-card {
+    animation: none;
+  }
+
+  .loading-card::after {
+    animation: none;
+    display: none;
+  }
+}
+
+/* Adjust for different pixel densities */
+@media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
+  .title {
+    text-shadow: 0 3px 10px rgba(0, 0, 0, 0.3);
+  }
+}
+
+/* Portrait orientation specific adjustments */
+@media screen and (orientation: portrait) {
+  .main::before {
+    background: radial-gradient(
+      circle at top,
+      rgba(26, 26, 26, 0.5) 0%,
+      rgba(0, 0, 0, 0.8) 100%
+    );
+  }
+}
+
+/* Landscape orientation specific adjustments */
+@media screen and (orientation: landscape) and (max-height: 500px) {
+  .title {
+    font-size: 2.8rem;
+    padding: 0.3rem 0;
+  }
+
+  .loading-card {
+    height: 110px;
+  }
+}
